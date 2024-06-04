@@ -10,6 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      title: "OMEN Tattoo Studio",
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
@@ -25,6 +27,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Omen Tattoo Studio"));
+    return const Center(child: Text("text"));
   }
 }
