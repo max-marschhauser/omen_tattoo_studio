@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:omen_tattoo_studio/screens/home_screen.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:url_strategy/url_strategy.dart';
+
+import 'config/router_manager/app_router_files/router_manager.dart';
+import 'config/styles/theme.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  setPathUrlStrategy();
   runApp(const MyApp());
+
+  FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {
@@ -10,11 +19,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: "OMEN Tattoo Studio",
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-
-      home: OTHomeScreen(),
+      routerConfig: OMRouterManager.shared.router,
+      theme: themeData,
     );
   }
 }
