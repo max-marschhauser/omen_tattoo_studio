@@ -5,5 +5,13 @@ class OMImages {
 
   get _main => 'assets/images/';
 
-  // get logo => _main + 'logo.jpg';
+  get logoSmall => _main + 'logo-small.jpeg';
+
+  get logoMedium => _main + 'logo-medium.jpeg';
+
+  get logoLarge => _main + 'logo-large.jpeg';
+
+  get logoSimple => _main + 'logo-simple.jpeg';
+
+  get logoTransparent => _main + 'logo-transparent.png';
 }
