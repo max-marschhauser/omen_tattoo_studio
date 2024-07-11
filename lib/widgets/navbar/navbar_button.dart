@@ -27,9 +27,19 @@ class OMNavbarButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
             child: Text(
               title,
-              style: isHome ? Theme.of(context).textTheme.headlineLarge : Theme.of(context).textTheme.titleLarge,
+              style: isHome ? Theme.of(context).textTheme.displayLarge : Theme.of(context).textTheme.displayMedium,
             ),
           )),
     );
   }
+}
+
+class OMNavbarButtonItem {
+  final String title;
+  final Function function;
+
+  OMNavbarButtonItem({
+    required this.title,
+    required this.function,
+  });
 }

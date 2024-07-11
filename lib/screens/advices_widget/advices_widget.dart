@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omen_tattoo_studio/config/styles/breakpoints.dart';
 import 'package:omen_tattoo_studio/config/styles/color.dart';
 import 'package:omen_tattoo_studio/config/styles/images.dart';
 import 'package:omen_tattoo_studio/data/advices.dart';
@@ -12,6 +13,9 @@ class OMAdvicesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    bool isLargeScreen = screenWidth > OMBreakpoints.largeScreen;
+
     return Scaffold(
       backgroundColor: OMColors.lightGray,
       body: Column(
@@ -39,7 +43,7 @@ class OMAdvicesWidget extends StatelessWidget {
                                 child: Text(
                                   e.title,
                                   overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context).textTheme.titleLarge,
+                                  style: Theme.of(context).textTheme.displaySmall,
                                 ),
                               ),
                               ...advicesList
@@ -62,14 +66,20 @@ class OMAdvicesWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 128, vertical: 64),
-                    child: Center(
-                      child: Image.asset(OMImages.shared.logoTransparent),
-                    ),
-                  ),
-                )
+                isLargeScreen
+                    ? Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 32),
+                          child: Center(
+                            child: Image.asset(
+                              OMImages.shared.logoTransparent,
+                              width: 640,
+                              height: 640,
+                            ),
+                          ),
+                        ),
+                      )
+                    : const SizedBox(),
               ],
             ),
           ))

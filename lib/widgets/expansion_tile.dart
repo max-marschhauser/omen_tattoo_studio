@@ -19,7 +19,7 @@ class OMExpansionTile extends StatelessWidget {
         title,
         overflow: TextOverflow.ellipsis,
         maxLines: 2,
-        style: Theme.of(context).textTheme.titleMedium,
+        style: Theme.of(context).textTheme.titleLarge,
       ),
       controller: ExpansionTileController(),
       children: [
@@ -27,7 +27,7 @@ class OMExpansionTile extends StatelessWidget {
           width: double.infinity,
           child: Text(
             content,
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         )
       ],

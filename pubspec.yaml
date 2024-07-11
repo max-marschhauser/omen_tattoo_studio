@@ -27,11 +27,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
-    - family: Roboto
+    - family: Rochester
       fonts:
-        - asset: assets/fonts/Roboto-Light.ttf
-        - asset: assets/fonts/Roboto-Medium.ttf
-        - asset: assets/fonts/Roboto-ThinItalic.ttf
+        - asset: assets/fonts/Rochester-Regular.ttf
 
   assets:
     - assets/images/
