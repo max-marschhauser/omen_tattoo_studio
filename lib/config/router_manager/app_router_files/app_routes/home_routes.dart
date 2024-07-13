@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:gbm_services/gbm_services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:omen_tattoo_studio/data/sketches_list.dart';
+import 'package:omen_tattoo_studio/data/tattoos_list.dart';
 
 import '../../../../screens/about_widget/about_widget.dart';
 import '../../../../screens/advices_widget/advices_widget.dart';
 import '../../../../screens/contacts_widget/contacts_widget.dart';
 import '../../../../screens/home_widget/home_widget.dart';
+import '../../../../screens/portfolio_widget/image_details_widget.dart';
 import '../../../../screens/portfolio_widget/image_list_widget.dart';
 import '../../../../screens/portfolio_widget/portfolio_widget.dart';
 import '../../common_router_files/element_routes.dart';
@@ -19,6 +23,7 @@ enum OMHomeRoute with MainGRRouteSegment {
   contacts,
   sketches,
   tattoos,
+  details,
   ;
 
   @override
@@ -31,6 +36,7 @@ enum OMHomeRoute with MainGRRouteSegment {
       case contacts:
       case sketches:
       case tattoos:
+      case details:
         return name;
     }
   }
@@ -39,13 +45,21 @@ enum OMHomeRoute with MainGRRouteSegment {
   String get localization {
     switch (this) {
       case home:
+        return "OMEN Tattoo Studio";
       case portfolio:
+        return "Portfolio";
       case advices:
+        return "Savjeti";
       case about:
+        return "About";
       case contacts:
+        return "Kontakti";
       case sketches:
+        return "Skice";
       case tattoos:
-        return name;
+        return "Tattoo";
+      case details:
+        return "Detalji";
     }
   }
 
@@ -61,11 +75,14 @@ enum OMHomeRoute with MainGRRouteSegment {
         ];
       case portfolio:
         return [sketches, tattoos];
+      case sketches:
+        return [details];
+      case tattoos:
+        return [details];
       case advices:
       case about:
       case contacts:
-      case sketches:
-      case tattoos:
+      case details:
         return [];
     }
   }
@@ -94,7 +111,7 @@ enum OMHomeRoute with MainGRRouteSegment {
           case home:
             return NoTransitionPage(
               child: Title(
-                title: "Home",
+                title: omAppRoutes.browserTitleFromFullPath(state.fullPath ?? omAppRoutes.rootPath) ?? '',
                 color: Theme.of(context).primaryColor,
                 child: const OMHomeWidget(),
               ),
@@ -102,7 +119,7 @@ enum OMHomeRoute with MainGRRouteSegment {
           case portfolio:
             return NoTransitionPage(
               child: Title(
-                title: "Portfolio",
+                title: omAppRoutes.browserTitleFromFullPath(state.fullPath ?? omAppRoutes.rootPath) ?? '',
                 color: Theme.of(context).primaryColor,
                 child: const OMPortfolioWidget(),
               ),
@@ -110,7 +127,7 @@ enum OMHomeRoute with MainGRRouteSegment {
           case sketches:
             return NoTransitionPage(
               child: Title(
-                title: "Skice",
+                title: omAppRoutes.browserTitleFromFullPath(state.fullPath ?? omAppRoutes.rootPath) ?? '',
                 color: Theme.of(context).primaryColor,
                 child: const OMImageListWidget(isTattoo: false),
               ),
@@ -118,15 +135,56 @@ enum OMHomeRoute with MainGRRouteSegment {
           case tattoos:
             return NoTransitionPage(
               child: Title(
-                title: "Tattoos",
+                title: omAppRoutes.browserTitleFromFullPath(state.fullPath ?? omAppRoutes.rootPath) ?? '',
                 color: Theme.of(context).primaryColor,
                 child: const OMImageListWidget(isTattoo: true),
               ),
             );
+          case details:
+            Map queryParams = state.uri.queryParameters;
+
+            if (queryParams.containsKey("id") &&
+                int.tryParse(queryParams["id"]) != null &&
+                queryParams.containsKey("type") &&
+                ((queryParams["type"] == "sketches" &&
+                        sketchesList.firstWhereOrNull(
+                              (p0) {
+                                return p0.id == int.parse(queryParams["id"]);
+                              },
+                            ) !=
+                            null) ||
+                    (queryParams["type"] == "tattoos" &&
+                        tattoosList.firstWhereOrNull(
+                              (p0) {
+                                return p0.id == int.parse(queryParams["id"]);
+                              },
+                            ) !=
+                            null))) {
+              return NoTransitionPage(
+                child: Title(
+                  title: omAppRoutes.browserTitleFromFullPath(state.fullPath ?? omAppRoutes.rootPath) ?? '',
+                  color: Theme.of(context).primaryColor,
+                  child: OMImageDetailsWidget(
+                    type: queryParams["type"],
+                    id: int.parse(queryParams["id"]!),
+                  ),
+                ),
+              );
+            } else {
+              context.go(OMHomeRoute.portfolio.fullPath);
+              return NoTransitionPage(
+                child: Title(
+                  title: omAppRoutes.browserTitleFromFullPath(state.fullPath ?? omAppRoutes.rootPath) ?? '',
+                  color: Theme.of(context).primaryColor,
+                  child: const SizedBox(),
+                ),
+              );
+            }
+
           case advices:
             return NoTransitionPage(
               child: Title(
-                title: "Savjeti",
+                title: omAppRoutes.browserTitleFromFullPath(state.fullPath ?? omAppRoutes.rootPath) ?? '',
                 color: Theme.of(context).primaryColor,
                 child: const OMAdvicesWidget(),
               ),
@@ -134,7 +192,7 @@ enum OMHomeRoute with MainGRRouteSegment {
           case about:
             return NoTransitionPage(
               child: Title(
-                title: "Umjetnica",
+                title: omAppRoutes.browserTitleFromFullPath(state.fullPath ?? omAppRoutes.rootPath) ?? '',
                 color: Theme.of(context).primaryColor,
                 child: const OMAboutWidget(),
               ),
@@ -142,7 +200,7 @@ enum OMHomeRoute with MainGRRouteSegment {
           case contacts:
             return NoTransitionPage(
               child: Title(
-                title: "Kontakti",
+                title: omAppRoutes.browserTitleFromFullPath(state.fullPath ?? omAppRoutes.rootPath) ?? '',
                 color: Theme.of(context).primaryColor,
                 child: const OMContactsWidget(),
               ),

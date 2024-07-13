@@ -22,7 +22,6 @@ dependencies:
       url: https://gitlab.gaussx.com/GaussEnterpriseManager/gbm-flutter.git
       path: packages/gbm_services
       ref: gbm_services-v0.3.31
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

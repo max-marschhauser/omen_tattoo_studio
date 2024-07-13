@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:omen_tattoo_studio/widgets/visibility_box.dart';
 
 import '../../config/styles/color.dart';
-import '../../data/image_list.dart';
+import '../../data/sketches_list.dart';
+import '../../data/tattoos_list.dart';
 import '../../widgets/navbar/navbar_widget.dart';
+import 'image_item_widget.dart';
 
 class OMImageListWidget extends StatefulWidget {
   final bool isTattoo;
@@ -31,31 +32,15 @@ class _OMImageListWidgetState extends State<OMImageListWidget> with AutomaticKee
           const OMNavbarWidget(),
           Expanded(
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                    color: OMColors.backgroundColor,
-                    width: MediaQuery.of(context).size.width,
-                    height: 1,
-                  ),
-                  ...imageList
-                      .where(
-                        (element) {
-                          if (widget.isTattoo) {
-                            return element.isTattoo == true;
-                          } else {
-                            return element.isTattoo == false;
-                          }
-                        },
-                      )
-                      .toList()
-                      .map(
-                        (e) {
-                          return OMVisibilityBox(child: Image.asset(e.image, width: 400, height: 400));
-                        },
-                      ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Wrap(
+                  runSpacing: 20,
+                  spacing: 20,
+                  children: [
+                    ...list(),
+                  ],
+                ),
               ),
             ),
           )
@@ -63,4 +48,22 @@ class _OMImageListWidgetState extends State<OMImageListWidget> with AutomaticKee
       ),
     );
   }
+
+  List<Widget> list() {
+    if (widget.isTattoo) {
+      return tattoosList.map(
+        (e) {
+          return OMImageItemWidget(item: e, type: OMListType.tattoos);
+        },
+      ).toList();
+    } else {
+      return sketchesList.map(
+        (e) {
+          return OMImageItemWidget(item: e, type: OMListType.sketches);
+        },
+      ).toList();
+    }
+  }
 }
+
+enum OMListType { sketches, tattoos }
