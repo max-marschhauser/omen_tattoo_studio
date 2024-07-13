@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:omen_tattoo_studio/config/styles/breakpoints.dart';
 import 'package:omen_tattoo_studio/config/styles/color.dart';
 import 'package:omen_tattoo_studio/config/styles/images.dart';
-import 'package:omen_tattoo_studio/data/advices.dart';
 import 'package:omen_tattoo_studio/models/advice.dart';
 import 'package:omen_tattoo_studio/widgets/expansion_tile.dart';
 
+import '../../data/advices_list.dart';
 import '../../widgets/navbar/navbar_widget.dart';
 
 class OMAdvicesWidget extends StatelessWidget {
