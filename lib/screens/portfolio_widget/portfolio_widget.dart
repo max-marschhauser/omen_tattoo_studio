@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gbm_services/gbm_services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:omen_tattoo_studio/config/router_manager/app_router_files/app_routes/home_routes.dart';
+import 'package:omen_tattoo_studio/widgets/navbar/base_page.dart';
 
-import '../../config/styles/color.dart';
 import '../../config/styles/images.dart';
-import '../../widgets/navbar/navbar_widget.dart';
 
 class OMPortfolioWidget extends StatefulWidget {
   const OMPortfolioWidget({super.key});
@@ -20,29 +19,21 @@ class _OMPortfolioWidgetState extends State<OMPortfolioWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: OMColors.lightGray,
-      body: Column(
+    return OMBasePage(
+      child: Row(
         children: [
-          const OMNavbarWidget(),
-          Expanded(
-            child: Row(
-              children: [
-                image(
-                    onHover: onHoverSketches,
-                    image: OMImages.shared.logoLarge,
-                    callback: () {
-                      context.go(OMHomeRoute.sketches.fullPath);
-                    }),
-                image(
-                    onHover: onHoverTattoos,
-                    image: OMImages.shared.logoLarge,
-                    callback: () {
-                      context.go(OMHomeRoute.tattoos.fullPath);
-                    }),
-              ],
-            ),
-          )
+          image(
+              onHover: onHoverSketches,
+              image: OMImages.shared.logoLarge,
+              callback: () {
+                context.go(OMHomeRoute.sketches.fullPath);
+              }),
+          image(
+              onHover: onHoverTattoos,
+              image: OMImages.shared.logoLarge,
+              callback: () {
+                context.go(OMHomeRoute.tattoos.fullPath);
+              }),
         ],
       ),
     );

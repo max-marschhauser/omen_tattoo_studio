@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../../config/styles/color.dart';
-import '../../widgets/navbar/navbar_widget.dart';
+import 'package:omen_tattoo_studio/widgets/navbar/base_page.dart';
 
 class OMAboutWidget extends StatelessWidget {
   const OMAboutWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: OMColors.lightGray,
-      body: Column(
-        children: [
-          OMNavbarWidget(),
-          Text("about"),
-        ],
-      ),
+    return const OMBasePage(
+      child: Text("about"),
     );
   }
 }
