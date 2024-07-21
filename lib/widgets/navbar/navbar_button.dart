@@ -24,9 +24,11 @@ class OMNavbarButton extends StatelessWidget {
             function();
           },
           child: Container(
+            width: isHome ? 200 : 175,
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
             child: Text(
               title,
+              textAlign: TextAlign.center,
               style: isHome ? Theme.of(context).textTheme.displayLarge : Theme.of(context).textTheme.displayMedium,
             ),
           )),

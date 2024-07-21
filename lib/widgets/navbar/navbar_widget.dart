@@ -105,29 +105,37 @@ class OMNavbarWidget extends StatelessWidget {
               )
             : Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Stack(
                   children: [
                     Center(child: logoImage),
-                    PopupMenuButton(
-                      /// todo style menu icon
-                      tooltip: "",
-                      itemBuilder: (context) {
-                        return navbarButtonItemList.map(
-                          (e) {
-                            return PopupMenuItem(
-                              onTap: () {
-                                e.function();
-                              },
-                              child: Text(
-                                e.title,
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                            );
-                          },
-                        ).toList();
-                      },
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: PopupMenuButton(
+                        icon: Container(
+                          color: OMColors.lightGray,
+                          padding: const EdgeInsets.all(4),
+                          child: const Icon(Icons.menu, size: 32),
+                        ),
+                        tooltip: "",
+                        itemBuilder: (context) {
+                          return navbarButtonItemList.map(
+                            (e) {
+                              return PopupMenuItem(
+                                onTap: () {
+                                  e.function();
+                                },
+                                child: Text(
+                                  e.title,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
+                              );
+                            },
+                          ).toList();
+                        },
+                      ),
                     ),
                   ],
                 ),

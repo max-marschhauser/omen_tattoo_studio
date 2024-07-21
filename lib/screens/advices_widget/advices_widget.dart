@@ -3,7 +3,7 @@ import 'package:omen_tattoo_studio/config/styles/breakpoints.dart';
 import 'package:omen_tattoo_studio/config/styles/color.dart';
 import 'package:omen_tattoo_studio/config/styles/images.dart';
 import 'package:omen_tattoo_studio/models/advice.dart';
-import 'package:omen_tattoo_studio/widgets/expansion_tile.dart';
+import 'package:omen_tattoo_studio/screens/advices_widget/expansion_tile.dart';
 import 'package:omen_tattoo_studio/widgets/navbar/base_page.dart';
 
 import '../../data/advices_list.dart';

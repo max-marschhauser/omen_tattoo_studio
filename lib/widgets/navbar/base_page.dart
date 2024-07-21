@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omen_tattoo_studio/widgets/footer.dart';
 
 import '../../config/styles/color.dart';
 import 'navbar_widget.dart';
@@ -20,9 +21,14 @@ class OMBasePage extends StatelessWidget {
           const OMNavbarWidget(),
           Expanded(
             child: SingleChildScrollView(
-              child: child,
+              child: Column(
+                children: [
+                  child,
+                  const OMFooterWidget(),
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
