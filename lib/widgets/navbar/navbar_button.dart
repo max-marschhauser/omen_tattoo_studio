@@ -24,6 +24,7 @@ class OMNavbarButton extends StatelessWidget {
             function();
           },
           child: Container(
+            decoration: BoxDecoration(border: Border.all(color: OMColors.backgroundColor, width: 10), borderRadius: BorderRadius.circular(20)),
             width: isHome ? 200 : 175,
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
             child: Text(

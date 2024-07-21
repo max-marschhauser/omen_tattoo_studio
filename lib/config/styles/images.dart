@@ -14,4 +14,6 @@ class OMImages {
   get logoSimple => _main + 'logo-simple.jpeg';
 
   get logoTransparent => _main + 'logo-transparent.png';
+
+  get background => _main + 'background.jpg';
 }

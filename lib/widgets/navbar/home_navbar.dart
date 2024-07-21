@@ -14,7 +14,7 @@ class OMHomeNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     List<OMNavbarButtonItem> navbarButtonItemList = [
       OMNavbarButtonItem(
-        title: "Portfolio",
+        title: "Radovi",
         function: () {
           context.go(OMHomeRoute.portfolio.fullPath);
         },
@@ -26,7 +26,7 @@ class OMHomeNavbar extends StatelessWidget {
         },
       ),
       OMNavbarButtonItem(
-        title: "Umjetnica",
+        title: "o meni",
         function: () {
           context.go(OMHomeRoute.about.fullPath);
         },
@@ -52,10 +52,10 @@ class OMHomeNavbar extends StatelessWidget {
     ];
 
     Widget logoImage = Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(200), color: Colors.white),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(200), color: Colors.white, border: Border.all(color: OMColors.backgroundColor, width: 10)),
       width: isLargeScreen ? 400 : 200,
       height: isLargeScreen ? 400 : 200,
-      padding: const EdgeInsets.all(8),
+      // padding: const EdgeInsets.all(8),
       child: Image.asset(
         OMImages.shared.logoTransparent,
         // width: 400,
@@ -69,7 +69,7 @@ class OMHomeNavbar extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 254),
             child: Divider(
-              color: OMColors.lightGray,
+              color: OMColors.backgroundColor,
               thickness: 10,
             ),
           ),

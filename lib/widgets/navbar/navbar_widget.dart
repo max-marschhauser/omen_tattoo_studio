@@ -14,7 +14,7 @@ class OMNavbarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     List<OMNavbarButtonItem> navbarButtonItemList = [
       OMNavbarButtonItem(
-        title: "Portfolio",
+        title: "Radovi",
         function: () {
           context.go(OMHomeRoute.portfolio.fullPath);
         },
@@ -26,7 +26,7 @@ class OMNavbarWidget extends StatelessWidget {
         },
       ),
       OMNavbarButtonItem(
-        title: "Umjetnica",
+        title: "O meni",
         function: () {
           context.go(OMHomeRoute.about.fullPath);
         },

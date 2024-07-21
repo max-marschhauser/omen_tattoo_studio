@@ -69,9 +69,9 @@ class _OMImageDetailsWidgetState extends State<OMImageDetailsWidget> {
         context.go("${OMHomeRoute.details.fullPath}?type=${widget.type}&id=$id");
       },
       icon: const Icon(
-        Icons.arrow_circle_left,
+        Icons.arrow_left,
         size: 64,
-        color: OMColors.backgroundColorWithOpacity,
+        color: OMColors.oldGold,
       ),
     );
     Widget arrowRight = IconButton(
@@ -88,9 +88,9 @@ class _OMImageDetailsWidgetState extends State<OMImageDetailsWidget> {
         context.go("${OMHomeRoute.details.fullPath}?type=${widget.type}&id=$id");
       },
       icon: const Icon(
-        Icons.arrow_circle_right,
+        Icons.arrow_right,
         size: 64,
-        color: OMColors.backgroundColorWithOpacity,
+        color: OMColors.oldGold,
       ),
     );
 

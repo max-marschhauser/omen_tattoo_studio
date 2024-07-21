@@ -31,9 +31,16 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
-    - family: Rochester
+    - family: Metro
       fonts:
-        - asset: assets/fonts/Rochester-Regular.ttf
+        - asset: assets/fonts/MetroPhotograph-Regular.otf
+    - family: Demon
+      fonts:
+        - asset: assets/fonts/Demon.ttf
+    - family: Poiret
+      fonts:
+        - asset: assets/fonts/PoiretOne-Regular.ttf
+
 
   assets:
     - assets/images/
