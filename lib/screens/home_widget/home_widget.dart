@@ -16,9 +16,10 @@ class OMHomeWidget extends StatelessWidget {
           Opacity(
               opacity: 0.2,
               child: Image.asset(
-                fit: BoxFit.cover,
-                OMImages.shared.background,
+                OMImages.shared.backgroundBorder2,
+                fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width,
+                // height: MediaQuery.of(context).size.height,
               )),
           const Center(child: OMHomeNavbar()),
         ],
